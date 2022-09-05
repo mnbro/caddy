@@ -45,4 +45,4 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
 
       - name: Build & Push Docker image
-        run: docker buildx build -t ghcr.io/${{ github.repository_owner }}/${{ IMAGE_NAME }}:latest -f Dockerfile --push --platform=linux/arm64,linux/amd64 .
+        run: docker buildx build -t ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest -f Dockerfile --push --platform=linux/arm64,linux/amd64 .
