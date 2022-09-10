@@ -1,17 +1,12 @@
 name: Docker
 
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 on:
   schedule:
-    - cron: "15 0 * * 6"
+    - cron: '15 0 * * 6'
   push:
     branches: ["main"]
     # Publish semver tags as releases.
-    tags: ["v*.*.*"]
+    tags: ['v*.*.*']
   pull_request:
     branches: ["main"]
 
@@ -59,7 +54,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          platforms: linux/arm64
+          platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
